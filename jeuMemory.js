@@ -1,10 +1,9 @@
-//compteur du nombre d'images cliquées
-let caseCliquees = [];
-let casesValidees=[];
+
+let caseCliquees = [];    
 let images=["./assets/images/memory-legume/1.svg", "./assets/images/memory-legume/2.svg", "./assets/images/memory-legume/3.svg",
-    "./assets/images/memory-legume/4.svg", "./assets/images/memory-legume/5.svg", "./assets/images/memory-legume/6.svg", 
-    "./assets/images/memory-legume/1.svg", "./assets/images/memory-legume/2.svg", "./assets/images/memory-legume/3.svg",
-    "./assets/images/memory-legume/4.svg", "./assets/images/memory-legume/5.svg", "./assets/images/memory-legume/6.svg"];
+"./assets/images/memory-legume/4.svg", "./assets/images/memory-legume/5.svg", "./assets/images/memory-legume/6.svg", 
+"./assets/images/memory-legume/1.svg", "./assets/images/memory-legume/2.svg", "./assets/images/memory-legume/3.svg",
+"./assets/images/memory-legume/4.svg", "./assets/images/memory-legume/5.svg", "./assets/images/memory-legume/6.svg"];
 
 // Fonction lancer jeu
 function lancerJeu(){    
@@ -12,7 +11,7 @@ function lancerJeu(){
     attribuerImages(plateau);
     //Lancement de la boucle de jeu
     for(let i=0; i<12; i++){
-        $(`#${i}`).on("click", revealTwoImages);    
+        $(`#${i}`).off("click", revealTwoImages).on("click", revealTwoImages);    
     }  
 }
 
@@ -30,7 +29,7 @@ function melangerTableau(plateau) {
 //Attribuer les images aux cases du html tout en restant cachée
     function attribuerImages(plateauMelange){
         for(let i=0; i<plateauMelange.length; i++){
-            $(`#${i}`).children("img").attr("src", "./assets/images/question.svg").attr("data-image", plateauMelange[i]);
+            $(`#${i}`).children("img").attr("src", "./assets/images/question.svg").attr("data-image", plateauMelange[i]).attr("alt","");
         }
     }
 
@@ -52,15 +51,14 @@ function revealTwoImages() {
                 caseCliquees[0].children("img").attr("src", "./assets/images/validation.png");
                 caseCliquees[0].children("img").attr("alt", "validation");
                 caseCliquees[1].children("img").attr("src", "./assets/images/validation.png");
-                caseCliquees[1].children("img").attr("alt", "validation");
-                caseCliquees = [];
+                caseCliquees[1].children("img").attr("alt", "validation");                
             } else {
                 caseCliquees[0].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");
-                caseCliquees[1].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");
-                caseCliquees = [];
+                caseCliquees[1].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");                
             }
-            victory();
-        }, 1200);
+            caseCliquees = [];       
+            victory();     
+        }, 2000);                
     }
 }
 
@@ -71,6 +69,22 @@ function victory(){
     }
 }
 
+//Reset et lancer le jeu de nouveau avec espace 
+function recommencerPartie(){
+    //reset des cases cliquées, du texte de victoire, des alt des images validées et des animations sur les images
+    caseCliquees = [];
+    $("h2").text("A vous de jouer!")    
+    $("img").removeClass("tourne").removeAttr("alt");        
+    lancerJeu();
+}
+
 lancerJeu();
 
-//Reset et lancer le jeu de nouveau avec espace 
+//Ecoute de "espace" pour redémarrer partie
+ $(document).on("keydown", (event) => {
+    if (event.code === "Space") {
+    recommencerPartie();
+   
+    }
+});
+
