@@ -5,7 +5,16 @@ td {
     text-align: center;
     border: 1px solid white;
     border-collapse: collapse;
-    cursor: pointer;
+    cursor: pointer;    
+    perspective: 600px;
+}
+
+td > img{
+    transition: transform 0.5s;
+}
+
+.tourne{
+    transform: rotateY(360deg);
 }
 
 td:hover {

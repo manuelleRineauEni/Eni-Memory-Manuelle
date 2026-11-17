@@ -1,5 +1,4 @@
 //compteur du nombre d'images cliquées
-let compteur = 0;
 let caseCliquees = [];
 let casesValidees=[];
 let images=["./assets/images/memory-legume/1.svg", "./assets/images/memory-legume/2.svg", "./assets/images/memory-legume/3.svg",
@@ -36,32 +35,34 @@ function melangerTableau(plateau) {
     }
 
 //Révéler deux image au click et les faire disparaitre si c'est faux
-function revealTwoImages() {    
-    //Réveler l'image cliquée avec fondu
+function revealTwoImages() {       
+    //Réveler l'image cliquée
     let vraieImage = $(this).children("img").attr("data-image");
-    $(this).children("img").attr("src", vraieImage).fadeIn();  
-    //Incrémenter le compteur de click d'image
-    compteur++
+    $(this).children("img").attr("src", vraieImage).toggleClass("tourne");      
     //Remplir le tableau pour garder en mémoire les 2 images cliquées
     caseCliquees.push($(this));
     //Conditions
     //si deux images ont été cliquée et qu'elles sont pareilles
-    if(compteur===2 && caseCliquees[0].children("img").attr("src") === caseCliquees[1].children("img").attr("src")){
-        caseCliquees[0].children("img").attr("src", "./assets/images/validation.png")
-        caseCliquees[0].children("img").attr("alt", "validation")
-        caseCliquees[1].children("img").attr("src", "./assets/images/validation.png")
-        caseCliquees[1].children("img").attr("alt", "validation")
-        compteur = 0;
-        caseCliquees = []
-        //si deux images sont cliquées mais qu'elles sont différentes et qu'elles n'ont pas déjà été validées
-    } else if (compteur === 2 && caseCliquees[0].children("img").attr("alt") != "validate") {
-        caseCliquees[0].children("img").fadeOut();
-        caseCliquees[1].children("img").fadeOut();
-        compteur = 0;
-        caseCliquees = []
-    }    
-    victory();
-}  
+
+    if(caseCliquees.length === 2){
+        
+        //Délai pour voir s'afficher les deux images avant de vérifier la condition
+        setTimeout(() => {
+            if (caseCliquees[0].children("img").attr("src") === caseCliquees[1].children("img").attr("src")) {
+                caseCliquees[0].children("img").attr("src", "./assets/images/validation.png");
+                caseCliquees[0].children("img").attr("alt", "validation");
+                caseCliquees[1].children("img").attr("src", "./assets/images/validation.png");
+                caseCliquees[1].children("img").attr("alt", "validation");
+                caseCliquees = [];
+            } else {
+                caseCliquees[0].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");
+                caseCliquees[1].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");
+                caseCliquees = [];
+            }
+            victory();
+        }, 1200);
+    }
+}
 
 //Condition de victoire
 function victory(){
@@ -71,3 +72,5 @@ function victory(){
 }
 
 lancerJeu();
+
+//Reset et lancer le jeu de nouveau avec espace 
