@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inscription</title>
     <link rel="icon" type="image/png" href="./assets/images/eniLogo.png">
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="inscription.js" defer></script>
 </head>
 <body class="p-3 p-md-5">
     <h1 class="text-center">S'inscrire</h1>
@@ -29,15 +30,22 @@
     <fieldset class="border p-3 rounded w-50 mx-auto">
         <legend class="text-center">Inscrivez-vous</legend>
         <form action="" method="POST" >
-            <div class="mb-3">
+            <div class="mb-3" >
                 <label for="userName" class="form-label">Nom d'utilisateur</label>
-                <input type="text" 
-                class="form-control" 
-                id="userName"
-                placeholder="3 caractères minimum"
-                pattern="[A-Za-z0-9]{3,}">
-                <hr>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" 
+                            class="form-control" 
+                            id="userName"
+                            placeholder="3 caractères minimum"
+                            pattern="[A-Za-z0-9]{3,}">
+                    </div>
+                    <div class="col-2">
+                        <img id="imgCheck" src=""> 
+                    </div>  
+                </div>             
             </div>
+            <hr>
             <div class="mb-3">
                 <label for="email" class="form-label">Entrez votre email</label>
                 <input type="email" 
