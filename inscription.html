@@ -46,7 +46,6 @@
                     </div>  
                 </div>             
             </div>
-            <hr>
             <div class="mb-3">
                 <label for="email" class="form-label">Entrez votre email</label>
                 <div class="row">
@@ -61,7 +60,7 @@
                     <div class="col-2">
                         <img id="imgCheck2" class="w-75" src=""> 
                     </div>  
-                <hr>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="userPassword" class="form-label">Mot de passe</label>
@@ -78,8 +77,24 @@
                     <div class="col-2">
                         <img id="imgCheck3" class="w-75" src=""> 
                     </div> 
-                    <hr>
-            <div id="passwordHelp" class="form-text">Au moins un symbole, un chiffre ainsi que 6 caractères minimum.</div>
+                </div>
+                <div id="passwordHelp" class="form-text">Au moins un symbole, un chiffre ainsi que 6 caractères minimum.</div>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="password" 
+                        class="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Confirmez le mot de passe"
+                        pattern="^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$"
+                        required>
+                    </div>
+                    <div class="col-2">
+                        <img id="imgCheck4" class="w-75" src=""> 
+                    </div> 
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Création du compte</button>
             <button type="reset" class="btn btn-primary">Annuler</button>

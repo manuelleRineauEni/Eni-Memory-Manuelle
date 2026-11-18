@@ -16,7 +16,7 @@ function checkUserName(){
         $("#imgCheck").attr("src", "./assets/images/error.svg")
     } else {
         $("#wrongUserName").remove();
-        $("#imgCheck").attr("src", "./assets/images/validation.png");
+        $("#imgCheck").attr("src", "./assets/images/check.svg");
         $(this).removeAttr("aria-describedby");
     }  
 }
@@ -27,7 +27,7 @@ function checkEmail(){
     //Regex email 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if(emailRegex.test($(this).val())){
-        $("#imgCheck2").attr("src", "./assets/images/validation.png");
+        $("#imgCheck2").attr("src", "./assets/images/check.svg");
         $(this).removeAttr("aria-describedby");
         $("#wrongEmail").remove();
     } else {
@@ -47,10 +47,18 @@ function checkPassword(){
     const passwordRegex = /^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$/;
     //Uniquement condition de longueur. Ajouter les autres conditions + l'indicateur visuel => autre fonction?
     if(passwordRegex.test($(this).val())){
-        $("#imgCheck3").attr("src", "./assets/images/validation.png");
+        $("#imgCheck3").attr("src", "./assets/images/check.svg");
         $("#passwordHelp").css("color", "")
     } else {              
         $("#imgCheck3").attr("src", "./assets/images/error.svg") 
         $("#passwordHelp").css("color", "red")    
     }  
+}
+
+//Confirmation du mot de passe
+$("#confirmPassword").on("input", checkConfirmation);
+function checkConfirmation(){
+    if($(this).val() === $("#userPassword").val()) {
+        $("#imgCheck4").attr("src", "./assets/images/check.svg");
+    }
 }
