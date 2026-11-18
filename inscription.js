@@ -45,14 +45,19 @@ function checkEmail(){
 $("#userPassword").on("input", checkPassword);
 function checkPassword(){
     const passwordRegex = /^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$/;
+    const regexStrongPassword = /^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{9,}$/;
     //Uniquement condition de longueur. Ajouter les autres conditions + l'indicateur visuel => autre fonction?
-    if(passwordRegex.test($(this).val())){
-        $("#imgCheck3").attr("src", "./assets/images/check.svg");
-        $("#passwordHelp").css("color", "")
+    if($(this).val().length >= 6){
+        $("#imgCheck3").attr("src", "./assets/images/check.svg");        
+        $("#moyen").toggleClass("d-none", !passwordRegex.test($(this).val()));
+        $("#fort").toggleClass("d-none", !regexStrongPassword.test($(this).val()));  
     } else {              
         $("#imgCheck3").attr("src", "./assets/images/error.svg") 
-        $("#passwordHelp").css("color", "red")    
+        if($(this).val().length < 6){
+            $("#faible").removeClass("d-none");
+        }   
     }  
+    //Ajout de la barre mot de passe
 }
 
 //Confirmation du mot de passe
@@ -60,5 +65,7 @@ $("#confirmPassword").on("input", checkConfirmation);
 function checkConfirmation(){
     if($(this).val() === $("#userPassword").val()) {
         $("#imgCheck4").attr("src", "./assets/images/check.svg");
+    } else {
+        $("#imgCheck4").attr("src", "./assets/images/error.svg");
     }
 }
