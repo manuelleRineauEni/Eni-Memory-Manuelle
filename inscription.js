@@ -40,8 +40,7 @@ function checkEmail(){
     }  
 }
 
-//Le mdp doit correspondre à la vérification du mdp (?) 
-// et comporter : au moins 6 caractères, un symbole, un chiffre et des lettres
+//Le mdp doit comporter : au moins 6 caractères, un symbole, un chiffre et des lettres + barre faible/moyen/fort
 $("#userPassword").on("input", checkPassword);
 function checkPassword(){
     const passwordRegex = /^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$/;
@@ -57,7 +56,6 @@ function checkPassword(){
             $("#faible").removeClass("d-none");
         }   
     }  
-    //Ajout de la barre mot de passe
 }
 
 //Confirmation du mot de passe
@@ -69,3 +67,36 @@ function checkConfirmation(){
         $("#imgCheck4").attr("src", "./assets/images/error.svg");
     }
 }
+
+// Au clic sur créer le compte, stockage des données dans le local storage
+$("form").on("submit", (e) => {    
+    //Empêche à la page de se recharger avant l'éxécution du script
+    e.preventDefault();
+
+    //Création de la nouvelle fiche utilisateur
+    let user = {
+        userName : $("#userName").val(),
+        email: $("#email").val(),
+        password: $("#userPassword").val()
+    };
+
+    // Créer un tableau users pour stocker tous les utilisateurs ou aller le récupérer s'il existe déjà
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    //Vérification que l'userName et l'email n'existent pas déjà : 
+    for(let i=0; i < users.length; i++) {
+        if(users[i].userName === $("#userName").val()){
+            alert("Ce nom d'utilisateur est déjà pris, veuillez en choisir un autre!");
+            return;
+        }
+        if(users[i].email === $("#email").val()){
+            alert("Cet email est déjà utilisé, veuillez saisir un nouvel email!");
+            return;
+        }
+    }
+    
+    //Ajouter l'user dans users
+    users.push(user);
+    //Mettre la fiche utilisateut dans le local storage avec JSON.stringify
+    localStorage.setItem("users", JSON.stringify(users));   
+})

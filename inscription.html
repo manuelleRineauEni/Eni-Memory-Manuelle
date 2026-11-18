@@ -54,7 +54,7 @@
                         class="form-control" 
                         id="email"
                         placeholder="Votre email"
-                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                         required>
                     </div>
                     <div class="col-2">
@@ -110,7 +110,7 @@
                     </div> 
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Création du compte</button>
+            <button type="submit" id="createAccoutn" class="btn btn-primary">Création du compte</button>
             <button type="reset" class="btn btn-primary">Annuler</button>
         </form>
     </fieldset>
