@@ -88,3 +88,24 @@ lancerJeu();
     }
 });
 
+/*
+
+function placeTable(row, column) {
+    let tableHtml = "<table>";
+    for(i=0; i < row; i++){
+        tableHtml += "<tr>";
+        for(j=0; j<column;j++){
+            tableHtml += `
+                <td id="${(i * column)+j}">
+                    <img src = "">
+                </td>
+            `;
+        } 
+    tableHtml += "</tr>"
+    }
+    tableHtml += "</table>"
+    $("section").after(tableHtml);
+}
+
+placeTable(3, 4)
+*/
