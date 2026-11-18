@@ -99,4 +99,7 @@ $("form").on("submit", (e) => {
     users.push(user);
     //Mettre la fiche utilisateut dans le local storage avec JSON.stringify
     localStorage.setItem("users", JSON.stringify(users));   
+    //Rediriger vers la page connexion
+    alert("Inscription réussie!");
+    window.location.href = "connexion.html";
 })
