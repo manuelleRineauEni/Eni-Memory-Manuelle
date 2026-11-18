@@ -34,7 +34,11 @@ function melangerTableau(plateau) {
     }
 
 //Révéler deux image au click et les faire disparaitre si c'est faux
-function revealTwoImages() {       
+function revealTwoImages() {
+    //Empêcher de pouvoir cliquer deux fois sur la même image
+    if (caseCliquees.length === 2 || $(this).children('img').hasClass('tourne')) {
+        return;
+    }       
     //Réveler l'image cliquée
     let vraieImage = $(this).children("img").attr("data-image");
     $(this).children("img").attr("src", vraieImage).toggleClass("tourne");      
