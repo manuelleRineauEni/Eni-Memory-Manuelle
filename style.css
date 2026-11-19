@@ -18,15 +18,12 @@ td {
 td > img{
     transition: transform 1s;
     transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
 }
 
 td:hover {
     border: 1px black solid;
-}
-
-img {
-    height: 100%;
-    width: 100%;
 }
 
 .tourne{
@@ -49,6 +46,18 @@ img {
 .btn-nav {
     width: 120px;
     text-align: center;
+}
+
+.btn-form{
+     /* Couleur de fond, texte et bordure */
+  --bs-btn-bg: #E73469;
+  --bs-btn-color: #ffffff;
+  --bs-btn-border-color: #E73469;
+
+  /* Couleur de fond au survol de la souris */
+  --bs-btn-hover-bg:#5268C9;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-border-color: #5268C9;
 }
 
 .gradient-custom {
