@@ -1,3 +1,9 @@
+h1{
+    font-family: "Playpen Sans";
+    font-weight: 800;    
+    color: white;
+}
+
 td {
     height: 15vh;
     width: 15vh;
@@ -14,10 +20,6 @@ td > img{
     transform-style: preserve-3d;
 }
 
-.tourne{
-    transform: rotateY(360deg);
-}
-
 td:hover {
     border: 1px black solid;
 }
@@ -26,3 +28,35 @@ img {
     height: 100%;
     width: 100%;
 }
+
+.tourne{
+    transform: rotateY(360deg);
+}
+
+.btn-outline-dark {
+  /* Couleur de fond quand le bouton est actif (page en cours) */
+  --bs-btn-active-bg: #5268C9;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-border-color: #5268C9;
+
+  --bs-btn-border-color:none ;
+  /* Couleur de fond au survol de la souris */
+  --bs-btn-hover-bg: #E73469;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-border-color: #E73469;
+}
+
+.btn-nav {
+    width: 120px;
+    text-align: center;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #5268C9;
+
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #5268C9, #E73469)
+}
+
+
