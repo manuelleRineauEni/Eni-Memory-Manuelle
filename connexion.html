@@ -6,52 +6,63 @@
     <title>connexion</title>
     <link rel="icon" type="image/png" href="./assets/images/question.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="connexion.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="p-3 p-md-5">
-    <h1 class="text-center">Se connecter</h1>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Accueil</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="inscription.html">S'inscrire</a>
-                <a class="nav-link" href="connexion.html">Se connecter</a>
-                <a class="nav-link" href="profil.html">Profil</a>
-                <a class="nav-link" href="jouer.html">Jouer</a>
-            </div>
-        </div>
-        </div>
-    </nav>
-    <fieldset class="border p-3 rounded container-fluid" style="max-width: 75%">
-        <legend class="text-center">Connectez-vous</legend>
-        <form action="" method="POST" >
-            <div class="mb-3" >                         
-                <label for="email" class="form-label">Entrez votre email</label>
-                    <input type="email" 
-                    class="form-control" 
-                    id="email"
-                    placeholder="Votre email : exemple john@doe.fr"
-                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-                    required>                    
-            </div>
-            <div class="mb-3">
-                <label for="userPassword" class="form-label">Mot de passe</label>
-                    <input type="password" 
-                    class="form-control" 
-                    id="userPassword" 
-                    placeholder="Votre mot de passe"
-                    pattern="^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$"
-                    required>
-            </div>                    
-            <button type="submit" id="connect" class="btn btn-primary">Se connecter</button>
-            <button type="reset" class="btn btn-primary">Annuler</button>
-        </form>
-    </fieldset>
+<body class="bg-light">
+  <!--En-tête avec gradient linéaire de couleur-->
+    <header class="mb-4 gradient-custom rounded d-flex align-items-center justify-content-center" style="height: 100px;">
+        <h1 class="p-0 m-0">Connexion</h1>
+    </header>
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 ">
+<!--Barre de navigation-->
+                <nav class="navbar navbar-expand-lg mb-4">
+                    <div class="container-fluid px-0">                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav gap-2 mt-2 mt-lg-0">
+                                <a class="btn btn-nav rounded-5 btn-outline-dark mx-2" href="index.html">Accueil</a>
+                                <a class="btn btn-nav rounded-5 btn-outline-dark mx-2" href="inscription.html">S'inscrire</a>
+                                <a class="btn btn-nav rounded-5 btn-outline-dark mx-2 active" aria-current="page" href="connexion.html">Se connecter</a>
+                                <a class="btn btn-nav rounded-5 btn-outline-dark mx-2" href="profil.html">Profil</a>
+                                <a class="btn btn-nav rounded-5 btn-outline-dark mx-2" href="jouer.html">Jouer</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+    <!--Formulaire-->  
+                <fieldset class="bg-white border rounded-3 shadow-sm p-2 p-md-4">
+                    <legend class="h2 text-center mb-4">Connectez-vous</legend>
+                    <form action="" method="POST" >
+                        <div class="mb-4" >                         
+                            <label for="email" class="form-label fs-5 mb-3">Entrez votre email</label>
+                            <input type="email" 
+                            class="form-control" 
+                            id="email"
+                            placeholder="Votre email : exemple john@doe.fr"
+                            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                            required>                    
+                        </div>
+                        <div class="mb-4">
+                            <label for="userPassword" class="form-label fs-5 mb-4">Mot de passe</label>
+                            <input type="password" 
+                            class="form-control" 
+                            id="userPassword" 
+                            placeholder="Votre mot de passe"
+                            pattern="^(?=.*\d)(?=.*[^a-zA-Z0-9À-ÖØ-öø-ÿ\s])[^\s]{6,}$"
+                            required>
+                        </div>                    
+                        <button type="submit" id="connect" class="btn btn-form">Se connecter</button>
+                        <button type="reset" class="btn btn-form">Annuler</button>
+                    </form>
+                </fieldset>
 <!--Bootstrap pour fonctionnement du menu mobile-->    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
 </body>

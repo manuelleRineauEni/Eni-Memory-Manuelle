@@ -129,14 +129,12 @@ function attribuerImages(plateauMelange){
     for(let i=0; i<plateauMelange.length; i++){
         $(`#${i}`).children("img").attr("src", "./assets/images/question.svg").attr("data-image", plateauMelange[i]).attr("alt","");
     }
-}
-
-   
+}   
 
 // Fonction lancer jeu
 function lancerJeu(rowcolumn){    
     //Lancement de la boucle de jeu
-    const nbreImages = (rowcolumn[0] * rowcolumn[1]) / 2;
+    const nbreImages = (rowcolumn[0] * rowcolumn[1]);
     for(let i=0; i<nbreImages; i++){
         $(`#${i}`).off("click", revealTwoImages).on("click", revealTwoImages);    
     }  
@@ -184,43 +182,9 @@ function victory(){
     }
 }
 
-//Reset et lancer le jeu de nouveau avec espace 
-function recommencerPartie(){
-    //reset des cases cliquées, du texte de victoire, des alt des images validées et des animations sur les images
-    caseCliquees = [];
-    $("h2").text("A vous de jouer!")    
-    $("img").removeClass("tourne").removeAttr("alt");        
-    lancerJeu();
-}
-
-
-
 //Ecoute de "espace" pour redémarrer partie
  $(document).on("keydown", (event) => {
     if (event.code === "Space") {
-    initGame();
-   
+    initGame();   
     }
 });
-
-/*
-
-function placeTable(rowcolumn) {
-    let tableHtml = "<table>";
-    for(i=0; i < row; i++){
-        tableHtml += "<tr>";
-        for(j=0; j<column;j++){
-            tableHtml += `
-                <td id="${(i * column)+j}">
-                    <img src = "">
-                </td>
-            `;
-        } 
-    tableHtml += "</tr>"
-    }
-    tableHtml += "</table>"
-    $("section").after(tableHtml);
-}
-
-placeTable(3, 4)
-*/
