@@ -2,15 +2,15 @@
 //Affichage de Bienvenue "user"
 let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
 
-    // Vérifie si un utilisateur est bien connecté et affichage du message de bienvenue
-    if (connectedUser) {
-        $("#welcomeMessage").text(`Bienvenue ${connectedUser.userName}`);
-        console.log(connectedUser.userName); 
-    } else {
-        // Redirection vers la page de connexion si personne n'est connecté
-        alert("Vous devez être connecté pour accéder à cette page.");
-        window.location.href = "connexion.html"; 
-    }
+// Vérifie si un utilisateur est bien connecté et affichage du message de bienvenue
+if (connectedUser) {
+    $("#welcomeMessage").text(`Bienvenue ${connectedUser.userName}`);
+    console.log(connectedUser.userName); 
+} else {
+     // Redirection vers la page de connexion si personne n'est connecté
+    alert("Vous devez être connecté pour accéder à cette page.");
+    window.location.href = "connexion.html"; 
+}
 
 //Affichage du nom utilisateur
 $("#userName").val(connectedUser.userName);
@@ -51,29 +51,29 @@ var tableauCorrespondanceMemoryImage = [
     },
     {nom:"chiens",
     nomAffiche:"Chiens",
-    img: "./assets/images/chiens/memory_detail_chiens.png",
+    img: "./assets/images/chiens/memory_details_chiens.png",
     chemin:"./assets/images/chiens/",
     extension:"webp",
     nombreCartes:23
     },
     {nom:"dinosaures",
     nomAffiche:"Dinosaures",
-    img:"./ressources/dinosaures/memory_detail_dinosaures.png",
-    chemin:"./ressources/dinosaures/",
+    img: "./assets/images/dinosaures/memory_detail_dinosaures.png",
+    chemin: "./assets/images/dinosaures/",
     extension:"jpg",
     nombreCartes:10
     },
     {nom:"dinosauresAvecNom",
     nomAffiche:"Dinosaures avec nom",
-    img:"./ressources/dinosauresAvecNom/memory_details_dinosaures_avec_nom.png",
-    chemin:"./ressources/dinosauresAvecNom/",
+    img:"./assets/images/dinosauresAvecNom/memory_details_dinosaures_avec_nom.png",
+    chemin:"./assets/images/dinosauresAvecNom/",
     extension:"jpg",
     nombreCartes:10
     },
     {nom:"alphabetScrabble",
-    nomAffiche:"Lettre Scrablle",
-    img:"./ressources/alphabet-scrabble/memory_detail_scrabble.png",
-    chemin:"./ressources/alphabet-scrabble/",
+    nomAffiche:"Lettres Scrablle",
+    img:"./assets/images/alphabet-scrabble/memory_detail_scrabble.png",
+    chemin:"./assets/images/alphabet-scrabble/",
     extension:"png",
     nombreCartes:26
     }
@@ -88,6 +88,22 @@ $("#choixMemory").on("change", () => {
     }
 })
 
+//Stockage des préférences : 
+$("form").on("submit", (e) => {    
+    //Empêche l'évènement d'avoir son comportement par défaut : recharger la page
+    e.preventDefault();
 
-//choix de la taille de la grille
+    //Création d'un objet préférences
+    let preferences = {
+        choixMemory : $("#choixMemory").val(),
+        choixTaille: $("#choixTaille").val()
+    };
 
+    //Ajout de l'objet à la fiche connected user
+    connectedUser.preferences = preferences;
+     
+    //Mettre à jour la fiche connected user dans le local storage
+    localStorage.setItem("connectedUser", JSON.stringify(connectedUser));  
+    //Rediriger vers la page de jeu     
+    window.location.href = "jouer.html";
+})
