@@ -11,3 +11,10 @@ git push -u origin main
 git remote add origin https://github.com/manuelleRineauEni/Eni-Memory-Manuelle.git
 git branch -M main
 git push -u origin main
+
+
+//Couleurs du dégradé 
+début
+#5268C9
+fin
+#E73469
