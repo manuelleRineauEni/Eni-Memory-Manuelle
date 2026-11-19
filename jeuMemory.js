@@ -1,15 +1,15 @@
 // Permet de jouer au memory choisi dans les préférences utilisateurs
 // Vérification qu'un utilisateur est connecté
-/*if (connectedUser) {
-    initGame(); 
-} else {
+//let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
+//if (connectedUser) {
+//    $(window).on('load', initGame); 
+//} else {
      // Redirection vers la page de connexion si personne n'est connecté
-    alert("Vous devez être connecté pour accéder à cette page.");
-    window.location.href = "connexion.html"; 
-}*/
+  //  alert("Vous devez être connecté pour accéder à cette page.");
+   // window.location.href = "connexion.html"; 
+//}
 
-$(window).on('load', initGame);
-
+ $(window).on('load', initGame); 
 //Liste des memorys
 var tableauCorrespondanceMemoryImage = [
     {nom:"legumes",
@@ -85,12 +85,12 @@ function initGame(){
 }
 
 function placeTable(rowcolumn) {
-    let tableHtml = `<table class="mx-auto">`;
+    let tableHtml = `<table class="mx-auto mb-5" style="border-collapse: separate; border-spacing: 5px;">`;
     for(i=0; i < rowcolumn[0]; i++){
-        tableHtml += "<tr>";
+        tableHtml += `<tr class="m-3 p-3">`;
         for(j=0; j<rowcolumn[1];j++){
             tableHtml += `
-                <td id="${(i * rowcolumn[1])+j}">
+                <td id="${(i * rowcolumn[1])+j}" class="m-3"  style="border-radius: 5px;">
                     <img src = "">
                 </td>
             `;
@@ -169,15 +169,21 @@ function revealTwoImages() {
                 caseCliquees[0].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");
                 caseCliquees[1].children("img").attr("src", "./assets/images/question.svg").removeClass("tourne");                
             }
-            caseCliquees = [];       
-            victory();     
+            caseCliquees = [];   
+            //Récupération des préférences utilisateurs
+            let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
+            //Initialisation de la grille de jeu selon le choix
+            const tailleGrille = connectedUser.preferences.choixTaille;
+            const rowsColumns = tailleGrille.split("*").map(Number);    
+            victory(rowsColumns);     
         }, 2000);                
     }
 }
 
 //Condition de victoire
-function victory(){
-    if($('img[alt="validation"]').length === 12){
+function victory(rowcolumn){
+    let nbreImages = rowcolumn[0] * rowcolumn[1];
+    if($('img[alt="validation"]').length === nbreImages){
         $("h2").text("Bravo, vous avez gagné!")
     }
 }
