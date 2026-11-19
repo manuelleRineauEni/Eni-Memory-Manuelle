@@ -93,8 +93,7 @@ $("form").on("submit", (e) => {
             alert("Cet email est déjà utilisé, veuillez saisir un nouvel email!");
             return;
         }
-    }
-    
+    }    
     //Ajouter l'user dans users
     users.push(user);
     //Mettre la fiche utilisateut dans le local storage avec JSON.stringify
