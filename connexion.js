@@ -11,6 +11,8 @@ $("form").on("submit", (e) => {
     // comparaison email et mdp saisi avec le storage
     for (let i=0; i < usersStorage.length; i++){
         if(saisieMail === usersStorage[i].email && saisiePassword === usersStorage[i].password){
+            let connectedUser = {userName : usersStorage[i].userName, email: usersStorage[i].email};
+            localStorage.setItem("connectedUser", JSON.stringify(connectedUser));
             alert(`L'email ${saisieMail} s'est connecté`);
             window.location.href = "profil.html";
             return;
