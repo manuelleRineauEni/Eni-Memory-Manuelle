@@ -86,7 +86,7 @@ function initGame(){
 }
 
 function placeTable(rowcolumn) {
-    let tableHtml = `<table class="mx-auto mb-5" style="border-collapse: separate; border-spacing: 5px;">`;
+    let tableHtml = `<table class="mx-auto mb-5 col-12 col-md-10 col-lg-8" style="border-collapse: separate; border-spacing: 5px;">`;
     for(let i=0; i < rowcolumn[0]; i++){
         tableHtml += `<tr class="m-3 p-3">`;
         for(let j=0; j<rowcolumn[1];j++){

@@ -15,13 +15,12 @@ td {
 
 td > img{
     display: block;
-    width : 100%;
+    width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit : contain;
     transition: transform 1s;
-    transform-style: preserve-3d;
-    height: 100%;
+    transform-style: preserve-3d;    
     border-radius: 8px
 }
 
