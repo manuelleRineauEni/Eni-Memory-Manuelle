@@ -87,11 +87,11 @@ function initGame(){
 
 function placeTable(rowcolumn) {
     let tableHtml = `<table class="mx-auto mb-5 col-12 col-md-10 col-lg-8" style="border-collapse: separate; border-spacing: 5px;">`;
-    for(let i=0; i < rowcolumn[0]; i++){
+    for(let i=0; i < rowcolumn[1]; i++){
         tableHtml += `<tr class="m-3 p-3">`;
-        for(let j=0; j<rowcolumn[1];j++){
+        for(let j=0; j<rowcolumn[0];j++){
             tableHtml += `
-                <td id="${(i * rowcolumn[1])+j}" class="m-3"  style="border-radius: 5px;">
+                <td id="${(i * rowcolumn[0])+j}" class="m-3"  style="border-radius: 5px;">
                     <img src = "">
                 </td>
             `;
@@ -143,8 +143,12 @@ function lancerJeu(rowcolumn){
 
 //Tableau qui stocke les id de la cases des images cliquées
 let caseCliquees = []; 
-//Révéler deux image au click et les faire disparaitre si c'est faux
-function revealTwoImages() {
+//Compteur de coups 
+let coupsJoues = 0;
+//Affichage des coups joués sur la page
+$("#score").after(`<p class=text-center>Coups joués : ${coupsJoues}</p>`)
+
+function revealTwoImages() {       
     //Empêcher de pouvoir cliquer deux fois sur la même image
     if (caseCliquees.length === 2 || $(this).children('img').hasClass('tourne')) {
         return;
@@ -156,9 +160,7 @@ function revealTwoImages() {
     caseCliquees.push($(this));
     //Conditions
     //si deux images ont été cliquée et qu'elles sont pareilles
-
-    if(caseCliquees.length === 2){
-        
+    if(caseCliquees.length === 2){        
         //Délai pour voir s'afficher les deux images avant de vérifier la condition
         setTimeout(() => {
             if (caseCliquees[0].children("img").attr("src") === caseCliquees[1].children("img").attr("src")) {
@@ -178,7 +180,7 @@ function revealTwoImages() {
             const rowsColumns = tailleGrille.split("*").map(Number);    
             victory(rowsColumns);     
         }, 2000);                
-    }
+    }     
 }
 
 //Condition de victoire
