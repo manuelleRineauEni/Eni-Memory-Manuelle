@@ -1,6 +1,7 @@
 // Permet de jouer au memory choisi dans les préférences utilisateurs
 // Vérification qu'un utilisateur est connecté
 //let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
+//function connectedUserExist () ??
 //if (connectedUser) {
 //    $(window).on('load', initGame); 
 //} else {
@@ -86,9 +87,9 @@ function initGame(){
 
 function placeTable(rowcolumn) {
     let tableHtml = `<table class="mx-auto mb-5" style="border-collapse: separate; border-spacing: 5px;">`;
-    for(i=0; i < rowcolumn[0]; i++){
+    for(let i=0; i < rowcolumn[0]; i++){
         tableHtml += `<tr class="m-3 p-3">`;
-        for(j=0; j<rowcolumn[1];j++){
+        for(let j=0; j<rowcolumn[1];j++){
             tableHtml += `
                 <td id="${(i * rowcolumn[1])+j}" class="m-3"  style="border-radius: 5px;">
                     <img src = "">

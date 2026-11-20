@@ -5,25 +5,28 @@ h1{
 }
 
 td {
-    height: 15vh;
-    width: 15vh;
-    background-color: rgba(200, 200, 200, 200);
+    background-color: #f8f9fa;
     text-align: center;
-    border: 1px solid white;
     border-collapse: collapse;
     cursor: pointer;    
     perspective: 600px;
+    padding: 0;
 }
 
 td > img{
+    display: block;
+    width : 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit : contain;
     transition: transform 1s;
     transform-style: preserve-3d;
     height: 100%;
-    width: 100%;
+    border-radius: 8px
 }
 
 td:hover {
-    border: 1px black solid;
+    opacity : 80%;
 }
 
 .tourne{
@@ -67,4 +70,5 @@ td:hover {
    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #5268C9, #E73469)
 }
+
 
